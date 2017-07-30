@@ -46,10 +46,24 @@ namespace parquetutils
 
        public static Matrix GetCorrelationMatrix(DataSetSummaryStats ds)
        {
-          return GetCovarianceMatrix(ds);
+          var matrix = GetCovarianceMatrix(ds);
+          var sd = new List<double>();
+          for (int i = 0; i < ds.DataSet.ColumnCount; i++)
+          {
+             var col = ds.GetColumnStats(i);
+             sd.Add(col.StandardDeviation);
+          }
+          for (int i = 0; i < matrix.MatrixType.GetLength(0); i++)
+          {
+             for (int j = 0; j < matrix.MatrixType.GetLength(1); j++)
+             {
+                matrix.MatrixType[i, j] = matrix.MatrixType[i, j] / (sd[i] * sd[j]);
+             }
+          }
+          return matrix;
        }
 
-      /// <summary>Returns a string that represents the current object.</summary>
+       /// <summary>Returns a string that represents the current object.</summary>
       /// <returns>A string that represents the current object.</returns>
       public override string ToString()
        {
