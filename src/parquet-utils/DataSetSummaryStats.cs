@@ -20,6 +20,8 @@ namespace Parquet.Data
          _handlers.Add(new StdDevHandler(), NumericTypes);
       }
 
+      public DataSet DataSet => _ds;
+
       private Type[] NumericTypes => new Type[] {typeof(double), typeof(int), typeof(float), typeof(long)};
       private Type[] AllTypes => new Type[] { typeof(double), typeof(int), typeof(float), typeof(long), typeof(string), typeof(DateTimeOffset) };
 
@@ -42,6 +44,5 @@ namespace Parquet.Data
          int index = _ds.Schema.GetElementIndex(schema);
          return GetColumnStats(index);
       }
-
    }
 }

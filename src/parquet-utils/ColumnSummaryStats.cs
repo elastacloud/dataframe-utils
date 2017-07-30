@@ -23,6 +23,10 @@ namespace Parquet.Data
       /// <summary>
       /// Number of null values
       /// </summary>
+      public double Sum;
+      /// <summary>
+      /// Number of null values
+      /// </summary>
       public int NullCount;
       /// <summary>
       /// The max value for the column
