@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "parquet-utils", "parquet-utils\parquet-utils.csproj", "{25BFDAD3-0776-41FF-8FA6-D2F3201469AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "parquet-utils-test", "parquet-utils-test\parquet-utils-test.csproj", "{9D672347-EA0D-4089-A1CD-92D4F1A97581}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "parquet-utils-tests", "parquet-utils-tests\parquet-utils-tests.csproj", "{E573AAA4-845F-4AA3-B9E5-86E0F1077DCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{25BFDAD3-0776-41FF-8FA6-D2F3201469AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25BFDAD3-0776-41FF-8FA6-D2F3201469AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25BFDAD3-0776-41FF-8FA6-D2F3201469AE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9D672347-EA0D-4089-A1CD-92D4F1A97581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9D672347-EA0D-4089-A1CD-92D4F1A97581}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9D672347-EA0D-4089-A1CD-92D4F1A97581}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9D672347-EA0D-4089-A1CD-92D4F1A97581}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E573AAA4-845F-4AA3-B9E5-86E0F1077DCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E573AAA4-845F-4AA3-B9E5-86E0F1077DCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E573AAA4-845F-4AA3-B9E5-86E0F1077DCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E573AAA4-845F-4AA3-B9E5-86E0F1077DCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
