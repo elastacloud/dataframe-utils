@@ -12,4 +12,8 @@
     <PackageReference Include="Parquet.Net" Version="1.0.0-beta-112" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Formats\" />
+  </ItemGroup>
+
 </Project>
