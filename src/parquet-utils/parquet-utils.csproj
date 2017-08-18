@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD1_4;NETSTANDARD1_6</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD1_4</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Parquet.Net" Version="1.0.0-beta-112" />
+    <PackageReference Include="Parquet.Net" Version="1.2.0-alpha-129" />
   </ItemGroup>
 
   <ItemGroup>

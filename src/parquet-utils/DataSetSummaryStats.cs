@@ -18,6 +18,7 @@ namespace Parquet.Data
          _handlers.Add(new MinStatsHandler(), NumericTypes);
          _handlers.Add(new MeanStatsHandler(), NumericTypes);
          _handlers.Add(new StdDevHandler(), NumericTypes);
+         _handlers.Add(new SumHandler(), NumericTypes);
       }
 
       public DataSet DataSet => _ds;

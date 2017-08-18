@@ -21,7 +21,8 @@ public class SumHandler : StatsHandler
    {
       if (!CanCalculateWithType(values))
          return values.ColumnSummaryStats;
-      double sum = Convert.ToDouble(values.Values.Cast<decimal>().Sum());
+      double sum = values.Values.Cast<object>().Sum(t => Convert.ToDouble(t));
+
       values.ColumnSummaryStats.Sum = sum;
       return values.ColumnSummaryStats;
    }
