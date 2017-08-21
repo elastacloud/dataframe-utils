@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\parquet-utils\parquet-utils.csproj" />
+    <ProjectReference Include="..\parquet-utils\dataframe-utils.csproj" />
   </ItemGroup>
 
   <ItemGroup>

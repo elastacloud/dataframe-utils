@@ -90,24 +90,24 @@ namespace dftest
       [Fact]
       public void Check_datasetstats_matrix_cov_equality()
       {
-         var ds = new DataSet(new SchemaElement<double>("a"), new SchemaElement<double>("b"),
-            new SchemaElement<double>("c")) { { 1.2, 1.5, 1.2 }, { 2.1, 2.2, 1.2 }, { 2.178, 2.212, 1.27778 }, { 2.178, 2.212, 1.27778 } };
+         var ds = new DataSet(
+            new SchemaElement<double>("x"), 
+            new SchemaElement<double>("y")) { { 1.0, 1.0 }, { 2.0, 2.0 }, { 3.0, 3.0 } };
 
          var matrix = Matrix.GetCorrelationMatrix(ds);
          Assert.Equal(matrix[1, 0], matrix[0, 1]);
-         Assert.Equal(matrix[2, 0], matrix[0, 2]);
-         Assert.Equal(matrix[2, 1], matrix[1, 2]);
       }
 
       [Fact]
       public void Check_datasetstats_matrix_cor_unity()
       {
-         var ds = new DataSet(new SchemaElement<double>("a"), new SchemaElement<double>("b"),
-            new SchemaElement<double>("c")) { { 1.2, 1.5, 1.2 }, { 2.1, 2.2, 1.2 }, { 2.178, 2.212, 1.27778 }, { 2.178, 2.212, 1.27778 } };
+         var ds = new DataSet(
+            new SchemaElement<double>("x"),
+            new SchemaElement<double>("y")) { { 1.0, 4.0 }, { 2.0, 7.0 }, { 3.0, 9.0 } };
 
          var matrix = Matrix.GetCorrelationMatrix(ds);
          Assert.Equal(1, matrix[0, 0]);
-         Assert.Equal(1, matrix[2, 2]);
+         Assert.Equal(0.9934, Math.Round(matrix[0, 1], 4));
          Assert.Equal(1, matrix[1, 1]);
       }
    }

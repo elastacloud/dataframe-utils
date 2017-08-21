@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Parquet.Data;
@@ -51,24 +52,33 @@ namespace parquetutils
       public static Matrix GetCovarianceMatrix(DataSet ds)
       {
          var dss = new DataSetSummaryStats(ds);
-          var matrix = new Matrix(ds);
-          matrix.SetMatrixSize(dss.DataSet.ColumnCount, dss.DataSet.ColumnCount);
-          List<double> means = new List<double>(), sums = new List<double>();
-
+         var matrix = new Matrix(ds);
+         matrix.SetMatrixSize(dss.DataSet.ColumnCount, dss.DataSet.ColumnCount);
+         List<double> means = new List<double>(), sums = new List<double>();
+         var columnDetails = new List<IList>();
          
          for (int i = 0; i < dss.DataSet.ColumnCount; i++)
          {
             var col = dss.GetColumnStats(i);
             means.Add(col.Mean);
             sums.Add(col.Sum);
+            columnDetails.Add(dss.DataSet.GetColumn(i));
          }
          // Cov(x,y) = E{xy} - E{x}E{y}. 
+         double covariance = 0.0D;
          for (int rows = 0; rows < dss.DataSet.ColumnCount; rows++)
           {
-            for (int cols = 0; cols < dss.DataSet.ColumnCount; cols++)
-            {
-               matrix.MatrixType[rows, cols] = ((sums[rows] * sums[cols]) / dss.DataSet.ColumnCount) - (means[rows] * means[cols]);
-            }
+             for (int cols = 0; cols < dss.DataSet.ColumnCount; cols++)
+             {
+                // loop in here against the underlying column values
+                for (int i = 0; i < dss.DataSet.RowCount; i++)
+                {
+                   covariance += ((double) columnDetails[rows][i] - means[rows]) *
+                                 ((double) columnDetails[cols][i] - means[cols]);
+                }
+                matrix.MatrixType[rows, cols] = covariance / (double) (dss.DataSet.RowCount - 1);
+                covariance = 0.0D;
+             }
           }
           return matrix;
        }

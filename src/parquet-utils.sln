@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "parquet-utils", "parquet-utils\parquet-utils.csproj", "{25BFDAD3-0776-41FF-8FA6-D2F3201469AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dataframe-utils", "parquet-utils\dataframe-utils.csproj", "{25BFDAD3-0776-41FF-8FA6-D2F3201469AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dftest", "dftest\dftest.csproj", "{06221FE9-7835-4333-83C0-C2E40EE69953}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dftest", "dftest\dftest.csproj", "{06221FE9-7835-4333-83C0-C2E40EE69953}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {091D3174-BEA7-493E-AB78-8205A098BAA7}
 	EndGlobalSection
 EndGlobal
