@@ -44,6 +44,18 @@ namespace Parquet.Data
       /// The column standard deviation 
       /// </summary>
       public double StandardDeviation;
+      /// <summary>
+      /// The median value
+      /// </summary>
+      public double Median;
+      /// <summary>
+      /// The 25th quartile value
+      /// </summary>
+      public double Quartile25;
+      /// <summary>
+      /// The 75th quartile value
+      /// </summary>
+      public double Quartile75;
 
       /// <summary>Returns a string that represents the current object.</summary>
       /// <returns>A string that represents the current object.</returns>

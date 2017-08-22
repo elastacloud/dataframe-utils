@@ -110,5 +110,18 @@ namespace dftest
          Assert.Equal(0.9934, Math.Round(matrix[0, 1], 4));
          Assert.Equal(1, matrix[1, 1]);
       }
+
+      [Fact]
+      public void Check_datasetstats_interquartilerange()
+      {
+         var ds = new DataSet(
+            new SchemaElement<double>("x"))
+            { {1D},{3D},{4d},{6d},{7d},{10d},{19d},{87d}};
+
+         var summary = new DataSetSummaryStats(ds);
+         Assert.Equal(3.5, summary.GetColumnStats(0).Quartile25);
+         Assert.Equal(6.5, summary.GetColumnStats(0).Median);
+         Assert.Equal(14.5, summary.GetColumnStats(0).Quartile75);
+      }
    }
 }
