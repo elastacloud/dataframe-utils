@@ -19,6 +19,18 @@ namespace dftest
       }
 
       [Fact]
+      public void Check_datasetstats_duplicates()
+      {
+         var ds = new DataSet(new SchemaElement<string>("s"), new SchemaElement<int>("i"),
+            new SchemaElement<float>("f")) { { "1", 2, 3F }, { "1", 3, 3F }, { "1", 4, 5.5F } };
+
+         var summary = new DataSetSummaryStats(ds);
+         Assert.Equal(1, summary.GetColumnStats(0).DistinctValuesCount);
+         Assert.Equal(3, summary.GetColumnStats(1).DistinctValuesCount);
+         Assert.Equal(2, summary.GetColumnStats(2).DistinctValuesCount);
+      }
+
+      [Fact]
       public void Check_datasetstats_variance()
       {
          var ds = new DataSet(new SchemaElement<int>("y"))

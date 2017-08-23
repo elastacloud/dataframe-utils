@@ -68,6 +68,10 @@ namespace Parquet.Data
       /// Gives the columns variance 
       /// </summary>
       public double Variance;
+      /// <summary>
+      /// number of distinct values
+      /// </summary>
+      public double DistinctValuesCount;
 
       /// <summary>Returns a string that represents the current object.</summary>
       /// <returns>A string that represents the current object.</returns>

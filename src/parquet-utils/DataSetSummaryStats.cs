@@ -28,6 +28,7 @@ namespace Parquet.Data
          _handlers.Add(new QuartileStatsHandler(), NumericTypes);
          _handlers.Add(new SkewnessStatsHandler(), NumericTypes);
          _handlers.Add(new KurtosisStatsHandler(), NumericTypes);
+         _handlers.Add(new DistinctValuesCountHandler(), AllTypes);
       }
       /// <summary>
       /// Gets the dataset currently stored 
