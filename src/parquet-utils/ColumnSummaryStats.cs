@@ -56,6 +56,10 @@ namespace Parquet.Data
       /// The 75th quartile value
       /// </summary>
       public double Quartile75;
+      /// <summary>
+      /// Illustrates the skew of the normal distribution
+      /// </summary>
+      public double Skewness;
 
       /// <summary>Returns a string that represents the current object.</summary>
       /// <returns>A string that represents the current object.</returns>
