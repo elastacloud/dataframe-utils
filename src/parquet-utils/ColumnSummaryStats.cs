@@ -60,6 +60,10 @@ namespace Parquet.Data
       /// Illustrates the skew of the normal distribution
       /// </summary>
       public double Skewness;
+      /// <summary>
+      /// The 4th moment of the series shows how flat the distribution is
+      /// </summary>
+      public double Kutosis;
 
       /// <summary>Returns a string that represents the current object.</summary>
       /// <returns>A string that represents the current object.</returns>

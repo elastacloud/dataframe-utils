@@ -18,7 +18,8 @@ namespace Parquet.Data.Stats
       {
          if (!CanCalculateWithType(values))
             return values.ColumnSummaryStats;
-         double max = Convert.ToDouble(values.Values.Cast<object>().Max());
+         var valuesDoubles = values.Values.Cast<double>();
+         double max = Convert.ToDouble(valuesDoubles.Max());
          values.ColumnSummaryStats.Max = max;
          return values.ColumnSummaryStats;
       }
