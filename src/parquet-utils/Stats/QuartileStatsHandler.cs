@@ -19,7 +19,7 @@ namespace Parquet.Data.Stats
       {
          double quartile25 = 0D, median = 0D, quartile75 = 0D;
 
-         var ordered = values.Values.Cast<double>().OrderBy(x => x).ToList();
+         var ordered = values.Values.Cast<object>().Select(Convert.ToDouble).OrderBy(x => x).ToList();
          int n = values.Values.Count;
          int midpoint = n / 2;
          // This is an even case for the quartile

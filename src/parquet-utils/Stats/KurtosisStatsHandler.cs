@@ -13,7 +13,7 @@ namespace Parquet.Data.Stats
        /// </summary>
        public override ColumnSummaryStats GetColumnStats(ColumnStatsDetails values)
        {
-          var doubleConvert = values.Values.Cast<double>().ToList();
+          var doubleConvert = values.Values.Cast<object>().Select(Convert.ToDouble).ToList();
           int n = doubleConvert.Count;
           // ReSharper disable once InconsistentNaming
           double y_bar = doubleConvert.Sum() / n;

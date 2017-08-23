@@ -15,7 +15,17 @@ namespace dftest
 
          var summary = new DataSetSummaryStats(ds);
          Assert.Equal(4, summary.GetColumnStats(1).Max);
-         Assert.Equal(5, summary.GetColumnStats(2).Max);
+         Assert.Equal(5.5, summary.GetColumnStats(2).Max);
+      }
+
+      [Fact]
+      public void Check_datasetstats_variance()
+      {
+         var ds = new DataSet(new SchemaElement<int>("y"))
+         { { 2 }, { 3 }, { 4 }, { 5 }, { 15 }, { 21 }, { 34 }, { 56 } };
+
+         var summary = new DataSetSummaryStats(ds);
+         Assert.Equal(320.25, summary.GetColumnStats(0).Variance);
       }
 
       [Fact]
