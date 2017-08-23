@@ -7,7 +7,7 @@ namespace Parquet.Data.Stats
    /// <summary>
    /// Used to return the min value of the column
    /// </summary>
-   public class MaxStatsHandler : StatsHandler
+   public class VarianceStatsHandler : StatsHandler
    {
       /// <summary>
       /// Gets the count of null values given the list of column values
@@ -18,10 +18,12 @@ namespace Parquet.Data.Stats
       {
          if (!CanCalculateWithType(values))
             return values.ColumnSummaryStats;
-         var valuesDoubles = values.Values.Cast<object>().Select(Convert.ToDouble).ToList();
-         values.ColumnSummaryStats.Max = valuesDoubles.Max();
+         double count = values.Values.Count;
+         double sum = values.Values.Cast<object>().Sum(value => Convert.ToDouble(value));
+         double average = sum / count;
+         double varianceSum = values.Values.Cast<object>().Sum(item => Math.Pow(Convert.ToDouble(item) - average, 2));
+         values.ColumnSummaryStats.Variance = varianceSum / count;
          return values.ColumnSummaryStats;
       }
-
    }
 }

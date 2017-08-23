@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Parquet.Data.Stats
 {
-    public class SkewnessStatsHandler : StatsHandler
+    public class KurtosisStatsHandler : StatsHandler
     {
        /// <summary>
        /// Implementation of skewness:
@@ -17,13 +17,17 @@ namespace Parquet.Data.Stats
           int n = doubleConvert.Count;
           // ReSharper disable once InconsistentNaming
           double y_bar = doubleConvert.Sum() / n;
-          double sum = 0;
+          double sum_numerator = 0;
+          double sum_denominator = 0;
           foreach (double y in doubleConvert)
           {
-             sum += Math.Pow(y - y_bar, 3);
+             sum_numerator += Math.Pow(y - y_bar, 4);
+             sum_denominator += Math.Pow(y - y_bar, 2);
           }
-          values.ColumnSummaryStats.Skewness =
-             sum / ((n - 1) * Math.Pow(values.ColumnSummaryStats.StandardDeviation, 3));
+          double numerator = sum_numerator / n;
+          double denominator = Math.Pow(sum_denominator, 2) / Math.Pow(n, 2);
+
+          values.ColumnSummaryStats.Kutosis = numerator / denominator;
           return values.ColumnSummaryStats;
        }
     }
