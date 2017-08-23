@@ -123,5 +123,16 @@ namespace dftest
          Assert.Equal(6.5, summary.GetColumnStats(0).Median);
          Assert.Equal(14.5, summary.GetColumnStats(0).Quartile75);
       }
+
+      [Fact]
+      public void Check_datasetstats_skewness()
+      {
+         var ds = new DataSet(
+               new SchemaElement<double>("y"))
+            { {5D},{20D},{40d},{80d},{100d},{102d} };
+
+         var summary = new DataSetSummaryStats(ds);
+         Assert.Equal(-0.096, Math.Round(summary.GetColumnStats(0).Skewness, 3));
+      }
    }
 }

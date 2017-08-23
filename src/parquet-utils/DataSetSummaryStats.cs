@@ -5,11 +5,16 @@ using Parquet.Data.Stats;
 
 namespace Parquet.Data
 {
+   /// <summary>
+   /// Gives a set of summary stats data for the column
+   /// </summary>
    public class DataSetSummaryStats
    {
       private readonly Parquet.Data.DataSet _ds;
       private readonly Dictionary<StatsHandler, Type[]> _handlers = new Dictionary<StatsHandler, Type[]>();
-
+      /// <summary>
+      /// Sets up the available stats handlers -this needs to turn into a discovery
+      /// </summary>
       public DataSetSummaryStats(DataSet ds)
       {
          _ds = ds;
@@ -20,13 +25,18 @@ namespace Parquet.Data
          _handlers.Add(new StdDevHandler(), NumericTypes);
          _handlers.Add(new SumHandler(), NumericTypes);
          _handlers.Add(new QuartileStatsHandler(), NumericTypes);
+         _handlers.Add(new SkewnessStatsHandler(), NumericTypes);
       }
-
+      /// <summary>
+      /// Gets the dataset currently stored 
+      /// </summary>
       public DataSet DataSet => _ds;
 
       private Type[] NumericTypes => new Type[] {typeof(double), typeof(int), typeof(float), typeof(long)};
       private Type[] AllTypes => new Type[] { typeof(double), typeof(int), typeof(float), typeof(long), typeof(string), typeof(DateTimeOffset) };
-
+      /// <summary>
+      /// Gets the column stats needed for the handling of all of the column data
+      /// </summary>
       public ColumnSummaryStats GetColumnStats(int index)
       {
          var stats = new ColumnSummaryStats(_ds.Schema.ColumnNames[index]);
@@ -40,7 +50,9 @@ namespace Parquet.Data
 
          return stats;
       }
-
+      /// <summary>
+      /// Gets the column stats needed for the handling of all of the column data
+      /// </summary>
       public ColumnSummaryStats GetColumnStats(SchemaElement schema)
       {
          int index = _ds.Schema.GetElementIndex(schema);
