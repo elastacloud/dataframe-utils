@@ -1,0 +1,20 @@
+version: 0.0.1-alpha-{build}
+pull_requests:
+  do_not_increment_build_number: true
+branches:
+  only:
+  - master
+skip_tags: true
+image: Visual Studio 2017
+configuration: Release
+platform: Any CPU
+build:
+  project: src/dataframe-utils.sln
+  verbosity: minimal
+test_script:
+- cmd: cd src\dftest
+- cmd: dotnet test
+- cmd: cd ..
+- cmd: cd ..
+artifacts:
+  - path: src/Parquet/bin/**/*.nupkg
