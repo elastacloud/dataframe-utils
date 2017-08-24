@@ -8,6 +8,8 @@ skip_tags: true
 image: Visual Studio 2017
 configuration: Release
 platform: Any CPU
+before_build:
+  - dotnet restore
 build:
   project: src/dataframe-utils.sln
   verbosity: minimal
