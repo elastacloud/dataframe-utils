@@ -12,10 +12,9 @@ build:
   project: src/dataframe-utils.sln
   verbosity: minimal
 test_script:
-- cmd: >-
-  cd src\dftest
-  dotnet test
-  cd ..
-  cd ..
+- cmd: cd src\dftest
+- cmd: dotnet test
+- cmd: cd ..
+- cmd: cd ..
 artifacts:
   - path: src/Parquet/bin/**/*.nupkg
