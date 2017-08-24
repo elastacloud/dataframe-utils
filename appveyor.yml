@@ -20,5 +20,8 @@ test_script:
 - cmd: dotnet test
 - cmd: cd ..
 - cmd: cd ..
+after_build:
+  - cmd: cd src\dataframe-maths
+  - nuget pack 
 artifacts:
-  - path: src/Parquet/bin/**/*.nupkg
+  - path: src/dataframe-maths/bin/**/*.nupkg
