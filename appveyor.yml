@@ -9,7 +9,9 @@ image: Visual Studio 2017
 configuration: Release
 platform: Any CPU
 before_build:
-  - dotnet restore
+  - cmd: cd src
+  - cmd: dotnet restore
+  - cmd: cd ..
 build:
   project: src/dataframe-utils.sln
   verbosity: minimal
