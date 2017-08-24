@@ -22,6 +22,6 @@ test_script:
 - cmd: cd ..
 after_build:
   - cmd: cd src\dataframe-maths
-  - cmd: dotnet pack dataframe-maths.csproj --configuration Release /p:Version="0.1.$(appveyor_build_number)"
+  - cmd: dotnet pack dataframe-maths.csproj --configuration Release /p:Version="0.1.1"
 artifacts:
   - path: src/dataframe-maths/bin/**/*.nupkg
