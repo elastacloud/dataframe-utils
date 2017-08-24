@@ -1,3 +1,4 @@
+
 version: 0.0.1-alpha-{build}
 pull_requests:
   do_not_increment_build_number: true
@@ -27,3 +28,6 @@ after_build:
   - cmd: cd ..
 artifacts:
   - path: src/dataframe-maths/bin/**/*.nupkg
+    name: df
+- provider: NuGet
+    artifact: dataframe-maths.nupkg
