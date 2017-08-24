@@ -28,6 +28,5 @@ after_build:
   - cmd: cd ..
 artifacts:
   - path: src/dataframe-maths/bin/**/*.nupkg
-    name: df
 - provider: NuGet
     artifact: dataframe-maths.nupkg
