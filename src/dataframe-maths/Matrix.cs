@@ -20,7 +20,7 @@ namespace parquetutils
        public Matrix(DataSet ds)
        {
           DataSet = new DataSetSummaryStats(ds);
-         SetMatrixSize(DataSet.DataSet.RowCount, DataSet.DataSet.ColumnCount);
+          SetMatrixSize(DataSet.DataSet.RowCount, DataSet.DataSet.ColumnCount);
           for (int i = 0; i < DataSet.DataSet.RowCount; i++)
           {
              for (int j = 0; j < DataSet.DataSet.ColumnCount; j++)
@@ -44,9 +44,10 @@ namespace parquetutils
       /// Gets the number of columns in the matrix
       /// </summary>
        public int Cols => MatrixType.GetLength(1);
-      /// <summary>
-      /// Gets the number of rows in the matrix
-      /// </summary>
+
+       /// <summary>
+       /// Gets the number of rows in the matrix
+       /// </summary>
        public int Rows => MatrixType.GetLength(0);
 
       public static Matrix GetCovarianceMatrix(DataSet ds)
@@ -106,8 +107,8 @@ namespace parquetutils
        }
 
        /// <summary>Returns a string that represents the current object.</summary>
-      /// <returns>A string that represents the current object.</returns>
-      public override string ToString()
+       /// <returns>A string that represents the current object.</returns>
+       public override string ToString()
        {
           var builder = new StringBuilder();
           builder.AppendLine("\t" + String.Join("\t", DataSet.DataSet.Schema.ColumnNames) + "\n");

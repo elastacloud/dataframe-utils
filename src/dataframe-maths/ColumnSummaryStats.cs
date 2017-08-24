@@ -44,6 +44,34 @@ namespace Parquet.Data
       /// The column standard deviation 
       /// </summary>
       public double StandardDeviation;
+      /// <summary>
+      /// The median value
+      /// </summary>
+      public double Median;
+      /// <summary>
+      /// The 25th quartile value
+      /// </summary>
+      public double Quartile25;
+      /// <summary>
+      /// The 75th quartile value
+      /// </summary>
+      public double Quartile75;
+      /// <summary>
+      /// Illustrates the skew of the normal distribution
+      /// </summary>
+      public double Skewness;
+      /// <summary>
+      /// The 4th moment of the series shows how flat the distribution is
+      /// </summary>
+      public double Kutosis;
+      /// <summary>
+      /// Gives the columns variance 
+      /// </summary>
+      public double Variance;
+      /// <summary>
+      /// number of distinct values
+      /// </summary>
+      public double DistinctValuesCount;
 
       /// <summary>Returns a string that represents the current object.</summary>
       /// <returns>A string that represents the current object.</returns>

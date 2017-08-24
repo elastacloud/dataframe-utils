@@ -6,13 +6,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
-    <PackageReference Include="Parquet.Net" Version="1.2.0-alpha-129" />
     <PackageReference Include="xunit" Version="2.2.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\parquet-utils\dataframe-utils.csproj" />
+    <ProjectReference Include="..\dataframe-maths\dataframe-maths.csproj" />
   </ItemGroup>
 
   <ItemGroup>

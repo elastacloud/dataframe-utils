@@ -11,11 +11,33 @@ namespace dftest
       public void Check_datasetstats_numerical_max()
       {
          var ds = new DataSet(new SchemaElement<string>("s"), new SchemaElement<int>("i"),
-            new SchemaElement<float>("f")) { { "1", 2, 3F }, { "1", 3, 4F }, { "1", 4, 5F } };
+            new SchemaElement<float>("f")) { { "1", 2, 3F }, { "1", 3, 4F }, { "1", 4, 5.5F } };
 
          var summary = new DataSetSummaryStats(ds);
          Assert.Equal(4, summary.GetColumnStats(1).Max);
-         Assert.Equal(5, summary.GetColumnStats(2).Max);
+         Assert.Equal(5.5, summary.GetColumnStats(2).Max);
+      }
+
+      [Fact]
+      public void Check_datasetstats_duplicates()
+      {
+         var ds = new DataSet(new SchemaElement<string>("s"), new SchemaElement<int>("i"),
+            new SchemaElement<float>("f")) { { "1", 2, 3F }, { "1", 3, 3F }, { "1", 4, 5.5F } };
+
+         var summary = new DataSetSummaryStats(ds);
+         Assert.Equal(1, summary.GetColumnStats(0).DistinctValuesCount);
+         Assert.Equal(3, summary.GetColumnStats(1).DistinctValuesCount);
+         Assert.Equal(2, summary.GetColumnStats(2).DistinctValuesCount);
+      }
+
+      [Fact]
+      public void Check_datasetstats_variance()
+      {
+         var ds = new DataSet(new SchemaElement<int>("y"))
+         { { 2 }, { 3 }, { 4 }, { 5 }, { 15 }, { 21 }, { 34 }, { 56 } };
+
+         var summary = new DataSetSummaryStats(ds);
+         Assert.Equal(320.25, summary.GetColumnStats(0).Variance);
       }
 
       [Fact]
@@ -109,6 +131,41 @@ namespace dftest
          Assert.Equal(1, matrix[0, 0]);
          Assert.Equal(0.9934, Math.Round(matrix[0, 1], 4));
          Assert.Equal(1, matrix[1, 1]);
+      }
+
+      [Fact]
+      public void Check_datasetstats_interquartilerange()
+      {
+         var ds = new DataSet(
+            new SchemaElement<double>("x"))
+            { {1D},{3D},{4d},{6d},{7d},{10d},{19d},{87d}};
+
+         var summary = new DataSetSummaryStats(ds);
+         Assert.Equal(3.5, summary.GetColumnStats(0).Quartile25);
+         Assert.Equal(6.5, summary.GetColumnStats(0).Median);
+         Assert.Equal(14.5, summary.GetColumnStats(0).Quartile75);
+      }
+
+      [Fact]
+      public void Check_datasetstats_skewness()
+      {
+         var ds = new DataSet(
+               new SchemaElement<double>("y"))
+            { {5D},{20D},{40d},{80d},{100d},{102d} };
+
+         var summary = new DataSetSummaryStats(ds);
+         Assert.Equal(-0.096, Math.Round(summary.GetColumnStats(0).Skewness, 3));
+      }
+
+      [Fact]
+      public void Check_datasetstats_kurtosis()
+      {
+         var ds = new DataSet(
+               new SchemaElement<double>("y"))
+            { {5D},{20D},{40d},{80d},{100d},{102d} };
+
+         var summary = new DataSetSummaryStats(ds);
+         Assert.Equal(1.341, Math.Round(summary.GetColumnStats(0).Kutosis, 3));
       }
    }
 }
