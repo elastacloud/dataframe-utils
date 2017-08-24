@@ -23,5 +23,7 @@ test_script:
 after_build:
   - cmd: cd src\dataframe-maths
   - cmd: dotnet pack dataframe-maths.csproj --configuration Release /p:Version="0.1.1"
+  - cmd: cd ..
+  - cmd: cd ..
 artifacts:
   - path: src/dataframe-maths/bin/**/*.nupkg
