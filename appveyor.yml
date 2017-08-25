@@ -8,6 +8,10 @@ skip_tags: true
 image: Visual Studio 2017
 configuration: Release
 platform: Any CPU
+before_build:
+  - cmd: cd src
+  - cmd: dotnet restore
+  - cmd: cd ..
 build:
   project: src/dataframe-utils.sln
   verbosity: minimal
@@ -16,5 +20,13 @@ test_script:
 - cmd: dotnet test
 - cmd: cd ..
 - cmd: cd ..
+after_build:
+  - cmd: cd src\dataframe-maths
+  - cmd: dotnet pack dataframe-maths.csproj --configuration Release /p:Version="0.1.1"
+  - cmd: cd ..
+  - cmd: cd ..
 artifacts:
-  - path: src/Parquet/bin/**/*.nupkg
+  - path: src/dataframe-maths/bin/**/*.nupkg
+deploy:
+  - provider: NuGet
+    artifact: dataframe-maths.nupkg
