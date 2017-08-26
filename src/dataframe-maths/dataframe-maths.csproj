@@ -23,15 +23,14 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <DefineConstants>DEBUG</DefineConstants>
     <SignAssembly>False</SignAssembly>
-    <AssemblyOriginatorKeyFile>C:\dev\parquet-dotnet\src\pqnet.snk</AssemblyOriginatorKeyFile>
-    <Description>Richard Conway (@azurecoder), Ivan Gavryliuk (@aloneguid), Andy Cross (@andycross)</Description>
+    <Description>A suite of libraries to provide stats functionality in dotnet for parquet and other formats</Description>
     <Authors>Richard Conway (@azurecoder), Ivan Gavryliuk (@aloneguid) and Andy Cross (@andycross)</Authors>
     <Company>Elastacloud</Company>
     <RepositoryUrl>https://github.com/elastacloud/dataframe-utils</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <PackageProjectUrl>https://github.com/elastacloud/dataframe-utils</PackageProjectUrl>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageId>Dataframe Utils</PackageId>
+    <PackageId>Dataframe.Utils</PackageId>
     <PackageIconUrl>http://i.isolineltd.com/nuget/parquet.png</PackageIconUrl>
     <PackageLicenseUrl>https://github.com/elastacloud/parquet-dotnet/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Copyright (c) 2017 by Elastacloud Ltd.</Copyright>
