@@ -20,6 +20,11 @@ test_script:
 - cmd: dotnet test
 - cmd: cd ..
 - cmd: cd ..
+artifacts:
+  - path: '**\*.nupkg' # find all NuGet packages recursively
+    name: dataframe-utils
 deploy:
   - provider: NuGet
-    artifact: dataframe-maths.nupkg
+    artifact: dataframe-utils
+    api_key:
+      secure: $(NUGET_KEY)
