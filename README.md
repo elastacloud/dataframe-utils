@@ -7,3 +7,17 @@ The following are features that are available through the library.
 - Execute correlation matrix across large parquet DataSet
 - Summary column statistics across millions or billions of rows
 - Linear regression at Service Fabric scale with SGD
+
+This project exposes a few packages:
+
+## DataFrame.Math
+
+A set of LINQ operators to calculate the following functions on a stream of numbers:
+
+- Kurtosis
+- Mean
+- Quantile25, Quantile75
+- Median
+- Skewness
+- Standard Deviation
+- Variance
