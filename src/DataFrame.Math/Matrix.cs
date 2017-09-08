@@ -20,12 +20,12 @@ namespace parquetutils
        public Matrix(DataSet ds)
        {
           DataSet = new DataSetSummaryStats(ds);
-          SetMatrixSize(DataSet.DataSet.RowCount, DataSet.DataSet.ColumnCount);
-          for (int i = 0; i < DataSet.DataSet.RowCount; i++)
+          SetMatrixSize(ds.RowCount, ds.ColumnCount);
+          for (int i = 0; i < ds.RowCount; i++)
           {
-             for (int j = 0; j < DataSet.DataSet.ColumnCount; j++)
+             for (int j = 0; j < ds.ColumnCount; j++)
              {
-                MatrixType[i, j] = Convert.ToDouble(DataSet.DataSet[i][j]);
+                MatrixType[i, j] = Convert.ToDouble(ds[i][j]);
              }
           }
        }
@@ -54,30 +54,30 @@ namespace parquetutils
       {
          var dss = new DataSetSummaryStats(ds);
          var matrix = new Matrix(ds);
-         matrix.SetMatrixSize(dss.DataSet.ColumnCount, dss.DataSet.ColumnCount);
+         matrix.SetMatrixSize(ds.ColumnCount, ds.ColumnCount);
          List<double> means = new List<double>(), sums = new List<double>();
          var columnDetails = new List<IList>();
          
-         for (int i = 0; i < dss.DataSet.ColumnCount; i++)
+         for (int i = 0; i < ds.ColumnCount; i++)
          {
-            var col = dss.GetColumnStats(i);
+            ColumnSummaryStats col = dss.GetColumnStats(i);
             means.Add(col.Mean);
             sums.Add(col.Sum);
-            columnDetails.Add(dss.DataSet.GetColumn(i));
+            columnDetails.Add(ds.GetColumn(i));
          }
          // Cov(x,y) = E{xy} - E{x}E{y}. 
          double covariance = 0.0D;
-         for (int rows = 0; rows < dss.DataSet.ColumnCount; rows++)
+         for (int rows = 0; rows < ds.ColumnCount; rows++)
           {
-             for (int cols = 0; cols < dss.DataSet.ColumnCount; cols++)
+             for (int cols = 0; cols < ds.ColumnCount; cols++)
              {
                 // loop in here against the underlying column values
-                for (int i = 0; i < dss.DataSet.RowCount; i++)
+                for (int i = 0; i < ds.RowCount; i++)
                 {
                    covariance += ((double) columnDetails[rows][i] - means[rows]) *
                                  ((double) columnDetails[cols][i] - means[cols]);
                 }
-                matrix.MatrixType[rows, cols] = covariance / (double) (dss.DataSet.RowCount - 1);
+                matrix.MatrixType[rows, cols] = covariance / (double) (ds.RowCount - 1);
                 covariance = 0.0D;
              }
           }
@@ -89,11 +89,11 @@ namespace parquetutils
        public static Matrix GetCorrelationMatrix(DataSet ds)
        {
           var dss = new DataSetSummaryStats(ds);
-         var matrix = GetCovarianceMatrix(ds);
+         Matrix matrix = GetCovarianceMatrix(ds);
           var sd = new List<double>();
-          for (int i = 0; i < dss.DataSet.ColumnCount; i++)
+          for (int i = 0; i < ds.ColumnCount; i++)
           {
-             var col = dss.GetColumnStats(i);
+            ColumnSummaryStats col = dss.GetColumnStats(i);
              sd.Add(col.StandardDeviation);
           }
           for (int i = 0; i < matrix.MatrixType.GetLength(0); i++)

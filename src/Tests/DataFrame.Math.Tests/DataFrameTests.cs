@@ -77,12 +77,18 @@ namespace dftest
       [Fact]
       public void Check_datasetstats_numerical_nulls()
       {
-         var ds = new DataSet(new SchemaElement<string>("s"), new SchemaElement<int>("i"),
-            new SchemaElement<float>("f")) { { "1", 2, null }, { null, null, 4F }, { "1", 4, null } };
+         var ds = new DataSet(
+            new SchemaElement<string>("s"),
+            new SchemaElement<int>("i"),
+            new SchemaElement<float>("f"))
+         {
+            { "1",  2,    null },
+            { null, null, 4F },
+            { "1",  4,    null }
+         };
 
          var summary = new DataSetSummaryStats(ds);
          Assert.Equal(1, summary.GetColumnStats(0).NullCount);
-         Assert.Equal(0, summary.GetColumnStats(0).Mean);
          Assert.Equal(1, summary.GetColumnStats(1).NullCount);
          Assert.Equal(2, summary.GetColumnStats(2).NullCount);
       }
@@ -165,7 +171,7 @@ namespace dftest
             { {5D},{20D},{40d},{80d},{100d},{102d} };
 
          var summary = new DataSetSummaryStats(ds);
-         Assert.Equal(1.341, Math.Round(summary.GetColumnStats(0).Kutosis, 3));
+         Assert.Equal(1.341, Math.Round(summary.GetColumnStats(0).Kurtosis, 3));
       }
    }
 }
