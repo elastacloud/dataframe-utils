@@ -1,21 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netstandard1.4</TargetFramework>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD1_4</DefineConstants>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Parquet.Net" Version="1.1.128" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Formats\" />
-  </ItemGroup>
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard1.4</TargetFrameworks>
     <Version>1.0.0</Version>
@@ -30,9 +13,15 @@
     <RepositoryType>GitHub</RepositoryType>
     <PackageProjectUrl>https://github.com/elastacloud/dataframe-utils</PackageProjectUrl>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageId>Dataframe.Utils</PackageId>
+    <PackageId>DataFrame.Math</PackageId>
     <PackageIconUrl>http://i.isolineltd.com/nuget/parquet.png</PackageIconUrl>
     <PackageLicenseUrl>https://github.com/elastacloud/parquet-dotnet/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Copyright (c) 2017 by Elastacloud Ltd.</Copyright>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD1_4</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Parquet.Net" Version="1.2.139" />
+  </ItemGroup>
 </Project>

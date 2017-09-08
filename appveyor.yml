@@ -1,4 +1,4 @@
-version: 0.0.1-alpha-{build}
+version: 1.0.1-alpha-{build}
 pull_requests:
   do_not_increment_build_number: false
 branches:
@@ -8,25 +8,14 @@ skip_tags: true
 image: Visual Studio 2017
 configuration: Release
 before_build:
-  - cmd: cd src
-  - cmd: dotnet restore
-  - cmd: cd ..
+- ps: .\appveyor.ps1
 build:
-  project: src/dataframe-utils.sln
+  project: src/DataFrame.sln
   verbosity: minimal
-  publish_nuget: true
-after_build:
-  - ps: Get-ChildItem .\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
 artifacts:
-  - path: '**\*.nupkg' # find all NuGet packages recursively
-    name: dataframe-utils
+  - path: src/**/*.nupkg
 test_script:
-- cmd: cd src\dftest
-- cmd: dotnet test
-- cmd: cd ..
-- cmd: cd ..
+- cmd: dotnet test src/Tests/DataFrame.Math.Tests
 deploy:
-  - provider: NuGet
-    artifact: dataframe-utils
-    api_key:
-      secure: $(NUGET_KEY)
+- provider: Environment
+  name: aloneguid NuGet
