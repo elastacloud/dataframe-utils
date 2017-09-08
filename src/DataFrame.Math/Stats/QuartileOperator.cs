@@ -9,11 +9,15 @@ namespace System.Linq
    {
       public static double Median(this IReadOnlyCollection<double> source)
       {
+         if (source.Count == 0) return 0;
+         if (source.Count == 1) return source.First();
+
          var ordered = new List<double>(source);
          ordered.Sort();
 
          int n = source.Count;
          int midpoint = n / 2;
+         if (midpoint == 0) midpoint = 1;
 
          return midpoint % 2 == 0
             ? (ordered[midpoint - 1] + ordered[midpoint]) / 2D
@@ -22,6 +26,9 @@ namespace System.Linq
 
       public static double Quartile25(this IReadOnlyCollection<double> source)
       {
+         if (source.Count == 0) return 0;
+         if (source.Count == 1) return source.First();
+
          var ordered = new List<double>(source);
          ordered.Sort();
 
@@ -50,6 +57,9 @@ namespace System.Linq
 
       public static double Quartile75(this IReadOnlyCollection<double> source)
       {
+         if (source.Count == 0) return 0;
+         if (source.Count == 1) return source.First();
+
          var ordered = new List<double>(source);
          ordered.Sort();
 
