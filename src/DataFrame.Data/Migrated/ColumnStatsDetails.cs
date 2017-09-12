@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 
 namespace Parquet.Data.Stats
 {
@@ -36,3 +36,4 @@ namespace Parquet.Data.Stats
       public System.Type ColumnType;
    }
 }
+*/

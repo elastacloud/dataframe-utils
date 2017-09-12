@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 
 namespace Parquet.Data
 {
@@ -94,4 +94,4 @@ namespace Parquet.Data
             $"ColumnName: {ColumnName}\nNullCount: {NullCount}\nMax: {Max}\nMin: {Min}\nMean: {Mean}\nStandard Deviation: {StandardDeviation}";
       }
    }
-}
+}*/

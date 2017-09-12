@@ -4,7 +4,6 @@
     <Version>1.0.0</Version>
     <FileVersion>1.0.0.0</FileVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <DefineConstants>DEBUG</DefineConstants>
     <SignAssembly>False</SignAssembly>
     <Description>A suite of libraries to provide stats functionality in dotnet for parquet and other formats</Description>
     <Authors>Richard Conway (@azurecoder), Ivan Gavryliuk (@aloneguid) and Andy Cross (@andycross)</Authors>
@@ -18,8 +17,8 @@
     <PackageLicenseUrl>https://github.com/elastacloud/parquet-dotnet/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Copyright (c) 2017 by Elastacloud Ltd.</Copyright>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD1_4</DefineConstants>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Parquet.Net" Version="1.2.139" />
