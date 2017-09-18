@@ -21,3 +21,7 @@ A set of LINQ operators to calculate the following functions on a stream of numb
 - Skewness
 - Standard Deviation
 - Variance
+
+## Contributing
+
+Please read [contibuting](doc/contributing.md) section for general git guidanec and [architecture](doc/architecture.md) for code orientation.
