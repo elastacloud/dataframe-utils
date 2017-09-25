@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B86D9B27-F2A8-4EB7-848A-F0F5A1F23634}"
 EndProject
@@ -30,6 +30,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{C762EF3B-95F
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFrame.Formats.Tests", "Tests\DataFrame.Formats.Tests\DataFrame.Formats.Tests.csproj", "{953CE6D5-51F5-4B27-B254-D1B6358750BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{F59E57DE-31D5-4E03-BDD0-4F2DD4BD3914}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F59E57DE-31D5-4E03-BDD0-4F2DD4BD3914}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F59E57DE-31D5-4E03-BDD0-4F2DD4BD3914}.Release|Any CPU.Build.0 = Release|Any CPU
+		{953CE6D5-51F5-4B27-B254-D1B6358750BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{953CE6D5-51F5-4B27-B254-D1B6358750BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{953CE6D5-51F5-4B27-B254-D1B6358750BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{953CE6D5-51F5-4B27-B254-D1B6358750BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +65,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{AC4E39C2-A7F1-47DA-B1D0-7C51CE80F821} = {B86D9B27-F2A8-4EB7-848A-F0F5A1F23634}
 		{C762EF3B-95F9-413F-8F86-1BEE2E1758BE} = {EF45AC2E-FE7A-4EAE-A334-27E9407AE51F}
+		{953CE6D5-51F5-4B27-B254-D1B6358750BF} = {B86D9B27-F2A8-4EB7-848A-F0F5A1F23634}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {091D3174-BEA7-493E-AB78-8205A098BAA7}

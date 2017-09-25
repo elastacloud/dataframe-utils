@@ -4,6 +4,10 @@ using System.Text;
 
 namespace DataFrame.Data.Storage
 {
+   /// <summary>
+   /// Simple in-memory matrix storage
+   /// </summary>
+   /// <typeparam name="T"></typeparam>
    sealed class SimpleMatrixStorage<T> : MatrixStorage<T>
    {
       private T[,] _data;
