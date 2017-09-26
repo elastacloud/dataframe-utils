@@ -3,7 +3,7 @@
 #APPVEYOR_BUILD_VERSION=1.0.21
 
 $Copyright = "Copyright (c) 2017 by Elastacloud Ltd."
-$PackageIconUrl = "http://i.isolineltd.com/nuget/parquet.png"
+$PackageIconUrl = "http://i.isolineltd.com/nuget/dataframe.png"
 $PackageProjectUrl = "https://github.com/elastacloud/dataframe-utils"
 $RepositoryUrl = "https://github.com/elastacloud/dataframe-utils"
 $Authors = "Richard Conway (@azurecoder), Ivan Gavryliuk (@aloneguid) and Andy Cross (@andycross)"
