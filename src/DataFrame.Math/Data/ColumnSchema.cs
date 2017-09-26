@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DataFrame.Data
+namespace DataFrame.Math.Data
 {
    public class ColumnSchema<T> : ColumnSchema
    {

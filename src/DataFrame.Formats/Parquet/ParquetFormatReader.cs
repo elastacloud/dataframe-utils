@@ -1,6 +1,5 @@
 ﻿using System.IO;
-using DataFrame.Data;
-using DataFrame.Data.Formats;
+using DataFrame.Math.Data;
 using Parquet;
 using PDS = Parquet.Data.DataSet;
 

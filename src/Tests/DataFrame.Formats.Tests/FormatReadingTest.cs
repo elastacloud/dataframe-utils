@@ -1,6 +1,5 @@
-using System;
 using System.IO;
-using DataFrame.Data;
+using DataFrame.Math.Data;
 using Xunit;
 
 namespace DataFrame.Formats.Tests

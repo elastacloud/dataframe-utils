@@ -1,5 +1,5 @@
-﻿using DataFrame.Data.Formats;
-using DataFrame.Formats.Parquet;
+﻿using DataFrame.Formats.Parquet;
+using DataFrame.Math.Data;
 
 namespace DataFrame.Formats
 {

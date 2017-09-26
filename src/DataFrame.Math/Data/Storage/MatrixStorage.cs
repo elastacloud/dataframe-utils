@@ -1,4 +1,4 @@
-﻿namespace DataFrame.Data.Storage
+﻿namespace DataFrame.Math.Data.Storage
 {
    public abstract class MatrixStorage<T>
    {

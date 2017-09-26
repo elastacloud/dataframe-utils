@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using DataFrame.Data;
-using DataFrame.Data.Formats;
+using DataFrame.Math.Data;
 using NetBox.FileFormats;
 
 namespace DataFrame.Formats.Csv

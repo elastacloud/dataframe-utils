@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataFrame.Data.Storage
+namespace DataFrame.Math.Data.Storage
 {
    /// <summary>
    /// Simple in-memory matrix storage

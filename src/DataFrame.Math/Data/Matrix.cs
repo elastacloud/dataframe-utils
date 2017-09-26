@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using DataFrame.Data.Formats;
-using DataFrame.Data.Storage;
+using DataFrame.Math.Data.Storage;
 
-namespace DataFrame.Data
+namespace DataFrame.Math.Data
 {
    public class Matrix : Matrix<object>
    {

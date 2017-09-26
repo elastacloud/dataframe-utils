@@ -1,6 +1,7 @@
 ﻿using System.IO;
+using DataFrame.Math.Data;
 
-namespace DataFrame.Data.Formats
+namespace DataFrame.Formats
 {
    public interface IFormatReader
    {
