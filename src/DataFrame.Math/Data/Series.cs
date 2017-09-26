@@ -11,6 +11,8 @@ namespace DataFrame.Math.Data
       public Series(string name, IEnumerable<T> values) : base(typeof(T), name, new List<T>(values))
       {
       }
+
+      public new IList<T> Data => (List<T>)base.Data;
    }
 
    /// <summary>
@@ -30,6 +32,8 @@ namespace DataFrame.Math.Data
          Name = name;
          _data = values;
       }
+
+      public IList Data => _data;
 
       public int Count => _data.Count;
 
