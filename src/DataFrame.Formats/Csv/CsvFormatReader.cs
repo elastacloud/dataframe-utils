@@ -9,17 +9,12 @@ using NetBox.FileFormats;
 
 namespace DataFrame.Formats.Csv
 {
-   class CsvFormatReader : IFormatReader
+   static class CsvFormatReader
    {
       private static readonly Dictionary<Type, Type> _inferredTypeToParquetType = new Dictionary<Type, Type>
       {
          { typeof(byte), typeof(int) }
       };
-
-      public Frame FromStream(Stream inputStream)
-      {
-         throw new NotImplementedException();
-      }
 
       /// <summary>
       /// Reads csv stream into dataset
@@ -27,7 +22,7 @@ namespace DataFrame.Formats.Csv
       /// <param name="csvStream">CSV stream</param>
       /// <param name="options">Options for reader, optional</param>
       /// <returns>Correct dataset</returns>
-      public static Matrix<object> ReadToDataSet(Stream csvStream, CsvOptions options = null)
+      public static Frame ReadToFrame(Stream csvStream, CsvOptions options = null)
       {
          if (csvStream == null) throw new ArgumentNullException(nameof(csvStream));
 
@@ -75,36 +70,19 @@ namespace DataFrame.Formats.Csv
             rowCount += 1;
          }
 
-         Matrix<object> result;
-
          //set schema
          if (options.InferSchema)
          {
-            result = InferSchema(headers, rowCount, columnValues);
-         }
-         else
-         {
-            var schema = headers.Select(h => new ColumnSchema<string>(h)).ToList();
-            result = new Matrix(schema, rowCount);
+            return InferSchema(headers, rowCount, columnValues);
          }
 
-         //assign values
-         foreach(KeyValuePair<int, IList> pair in columnValues)
-         {
-            int r = 0;
-            foreach(object value in pair.Value)
-            {
-               result[pair.Key, r++] = value;
-            }
-         }
-
-         return result;
+         return new Frame(headers.Select((name, i) => new Series<string>(name, (List<string>)columnValues[i])));
       }
 
 
-      private static Matrix InferSchema(string[] headers, int rowCount, Dictionary<int, IList> columnValues)
+      private static Frame InferSchema(string[] headers, int rowCount, IReadOnlyDictionary<int, IList> columnValues)
       {
-         var elements = new List<ColumnSchema>();
+         var series = new List<Series>();
          for (int i = 0; i < headers.Length; i++)
          {
             IList cv = columnValues[i];
@@ -112,12 +90,10 @@ namespace DataFrame.Formats.Csv
 
             Type ct;
             if (!_inferredTypeToParquetType.TryGetValue(columnType, out ct)) ct = columnType;
-            elements.Add(new ColumnSchema(headers[i], ct));
-
-            columnValues[i] = typedValues;
+            series.Add(new Series(ct, headers[i], typedValues));
          }
 
-         return new Matrix(elements, rowCount);
+         return new Frame(series);
       }
    }
 }

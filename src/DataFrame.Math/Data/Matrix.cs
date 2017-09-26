@@ -4,17 +4,9 @@ using DataFrame.Math.Data.Storage;
 
 namespace DataFrame.Math.Data
 {
-   public class Matrix : Matrix<object>
-   {
-      public Matrix(IReadOnlyCollection<ColumnSchema> schema, int rowCount) : base(schema.Count, rowCount)
-      {
-      }
-   }
-
    public class Matrix<T>
    {
       private readonly MatrixStorage<T> _storage;
-      private readonly List<ColumnSchema> _schema = new List<ColumnSchema>();
 
       public Matrix(int columns, int rows) : this(columns, rows, new SimpleMatrixStorage<T>(columns, rows))
       {
@@ -50,15 +42,6 @@ namespace DataFrame.Math.Data
       {
          //todo:
       }
-
-      #region [ Fluent Extensions ]
-
-      public static FluentReader Read()
-      {
-         return new FluentReader();
-      }
-
-      #endregion
 
       public override string ToString()
       {

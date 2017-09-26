@@ -11,7 +11,7 @@ namespace DataFrame.Formats.Tests
       {
          using (FileStream fs = File.OpenRead(GetDataFilePath("alltypes.snappy.parquet")))
          {
-            Frame frame = Matrix.Read().Parquet().FromStream(fs);
+            Frame frame = Frame.Read.Parquet(fs);
          }
       }
 

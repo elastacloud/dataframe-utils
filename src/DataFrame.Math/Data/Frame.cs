@@ -35,5 +35,11 @@ namespace DataFrame.Math.Data
 
          return f;
       }
+
+      #region [ Fluent Extensions ]
+
+      public static FluentReader Read => new FluentReader();
+
+      #endregion
    }
 }
