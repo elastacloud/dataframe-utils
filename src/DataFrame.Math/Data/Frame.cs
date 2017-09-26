@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace DataFrame.Math.Data
 {
@@ -14,6 +13,22 @@ namespace DataFrame.Math.Data
       public Frame(IEnumerable<Series> series)
       {
          _series = new List<Series>(series);
+      }
+
+      public IReadOnlyCollection<Series> Series => _series;
+
+      public int RowCount => _series.First().Count;
+
+      public IReadOnlyCollection<object> GetRow(int i)
+      {
+         return _series.Select(s => s[i]).ToArray();
+      }
+
+      public static Frame operator+(Frame f, Series s)
+      {
+         f._series.Add(s);
+
+         return f;
       }
    }
 }

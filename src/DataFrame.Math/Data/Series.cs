@@ -31,6 +31,13 @@ namespace DataFrame.Math.Data
          _data = values;
       }
 
+      public int Count => _data.Count;
+
+      public object this[int i]
+      {
+         get => _data[i];
+      }
+
       public override string ToString()
       {
          return $"{Name} ({DataType}) of {_data.Count}";
