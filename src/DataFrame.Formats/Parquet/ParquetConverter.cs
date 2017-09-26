@@ -1,29 +1,19 @@
 ﻿using System.Linq;
 using PDS = Parquet.Data.DataSet;
-using PDR = Parquet.Data.Row;
 using DataFrame.Math.Data;
+using System.Collections.Generic;
 
 namespace DataFrame.Formats.Parquet
 {
    static class ParquetConverter
    {
-      public static Matrix ConvertFromParquet(PDS pds)
+      public static Frame ConvertFromParquet(PDS pds)
       {
-         var schema = pds.Schema.Elements.Select(se => new ColumnSchema(se.Name, se.ElementType)).ToList();
-         var result = new Matrix(schema, pds.RowCount);
+         IEnumerable<Series> allSeries =
+            pds.Schema.Elements
+               .Select((se, i) => Series.FromList(pds.GetColumn(i), se.ElementType, se.Name));
 
-         int r = 0;
-         foreach(PDR row in pds)
-         {
-            object[] raw = row.RawValues;
-            for(int c = 0; c < raw.Length; c++)
-            {
-               result[c, r] = raw[c];
-            }
-            r += 1;
-         }
-
-         return result;
+         return new Frame(allSeries);
       }
    }
 }

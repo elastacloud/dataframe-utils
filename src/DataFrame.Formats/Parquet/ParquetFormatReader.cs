@@ -7,7 +7,7 @@ namespace DataFrame.Formats.Parquet
 {
    class ParquetFormatReader : IFormatReader
    {
-      public Matrix FromStream(Stream inputStream)
+      public Frame FromStream(Stream inputStream)
       {
          PDS ds = ParquetReader.Read(inputStream);
 

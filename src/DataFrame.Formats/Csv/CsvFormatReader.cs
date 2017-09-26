@@ -16,7 +16,7 @@ namespace DataFrame.Formats.Csv
          { typeof(byte), typeof(int) }
       };
 
-      public Matrix FromStream(Stream inputStream)
+      public Frame FromStream(Stream inputStream)
       {
          throw new NotImplementedException();
       }

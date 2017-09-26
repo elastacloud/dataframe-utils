@@ -5,6 +5,6 @@ namespace DataFrame.Formats
 {
    public interface IFormatReader
    {
-      Matrix FromStream(Stream inputStream);
+      Frame FromStream(Stream inputStream);
    }
 }
