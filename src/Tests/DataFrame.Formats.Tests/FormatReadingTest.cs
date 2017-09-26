@@ -9,10 +9,16 @@ namespace DataFrame.Formats.Tests
       [Fact]
       public void Read_parquet_file()
       {
-         using (FileStream fs = File.OpenRead(@"c:\tmp\athena-spark.parquet"))
+         using (FileStream fs = File.OpenRead(GetDataFilePath("alltypes.snappy.parquet")))
          {
             Matrix ds = Matrix.Read().Parquet().FromStream(fs);
          }
+      }
+
+      private string GetDataFilePath(string name)
+      {
+         string thisPath = GetType().Assembly.Location;
+         return Path.Combine(Path.GetDirectoryName(thisPath), "TestData", name);
       }
    }
 }
