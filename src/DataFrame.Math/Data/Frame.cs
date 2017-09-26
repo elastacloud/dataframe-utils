@@ -19,6 +19,11 @@ namespace DataFrame.Math.Data
 
       public int RowCount => _series.First().Count;
 
+      public Series this[int i]
+      {
+         get => _series[i];
+      }
+
       public IReadOnlyCollection<object> GetRow(int i)
       {
          return _series.Select(s => s[i]).ToArray();

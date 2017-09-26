@@ -15,7 +15,10 @@ build:
 artifacts:
   - path: src/**/*.nupkg
 test_script:
-- cmd: dotnet test src/Tests/DataFrame.Math.Tests
+- cmd: >-
+    dotnet test src/Tests/DataFrame.Math.Tests
+
+    dotnet test src/Tests/DataFrame.Formats.Tests
 deploy:
 - provider: Environment
   name: aloneguid NuGet
