@@ -6,6 +6,13 @@ using System.Text;
 namespace DataFrame.Math.Data
 {
 
+   public class Series<T> : Series
+   {
+      public Series(string name, IEnumerable<T> values) : base(typeof(T), name, new List<T>(values))
+      {
+      }
+   }
+
    /// <summary>
    /// A panda-like series
    /// </summary>
@@ -17,10 +24,11 @@ namespace DataFrame.Math.Data
 
       public string Name { get; }
 
-      public Series(Type dataType, string name)
+      public Series(Type dataType, string name, IList values)
       {
          DataType = dataType;
          Name = name;
+         _data = values;
       }
 
       public override string ToString()
@@ -35,8 +43,7 @@ namespace DataFrame.Math.Data
 
          IList typedList = (IList)Activator.CreateInstance(listGenericType);
 
-         var series = new Series(dataType, name);
-         series._data = typedList;
+         var series = new Series(dataType, name, typedList);
 
          typedList.AddRange(values);
 
