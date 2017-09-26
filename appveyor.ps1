@@ -94,4 +94,4 @@ Get-ChildItem *.csproj -Recurse | Where-Object {-not(($_.Name -like "*test*")) }
    Update-ProjectVersion $_
 }
 
-Remove-AllNuGetPackagePreviews -PackageId "DataFrame.Math" -ApiKey $env:NUGET_KEY -Keyword "alpha" -PreviewsToKeep 3 -VersionsToMaintain 6
+#Remove-AllNuGetPackagePreviews -PackageId "DataFrame.Math" -ApiKey $env:NUGET_KEY -Keyword "alpha" -PreviewsToKeep 3 -VersionsToMaintain 6
