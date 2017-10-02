@@ -26,5 +26,25 @@ namespace DataFrame.Math.Data.Storage
       {
          _data[column, row] = value;
       }
+
+      public override IList<T> GetColumn(int column)
+      {
+         var columnValues = new List<T>();
+         for (int i = 0; i < RowCount; i++)
+         {
+            columnValues.Add(_data[column, i]);
+         }
+         return columnValues;
+      }
+
+      public override IList<T> GetRow(int row)
+      {
+         var rowValues = new List<T>();
+         for (int i = 0; i < ColumnCount; i++)
+         {
+            rowValues.Add(_data[i, row]);
+         }
+         return rowValues;
+      }
    }
 }

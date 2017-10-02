@@ -1,4 +1,6 @@
-﻿namespace DataFrame.Math.Data.Storage
+﻿using System.Collections.Generic;
+
+namespace DataFrame.Math.Data.Storage
 {
    public abstract class MatrixStorage<T>
    {
@@ -11,6 +13,9 @@
       public abstract T Get(int column, int row);
 
       public abstract void Set(int column, int row, T value);
+
+      public abstract IList<T> GetColumn(int column);
+      public abstract IList<T> GetRow(int row);
 
       public int ColumnCount { get; private set; }
 

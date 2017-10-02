@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 using DataFrame.Math.Data.Storage;
 
@@ -37,6 +38,16 @@ namespace DataFrame.Math.Data
       public int ColumnCount => _storage.ColumnCount;
 
       public int RowCount => _storage.RowCount;
+
+      public IList<T> GetColumn(int index)
+      {
+         return _storage.GetColumn(index);
+      }
+
+      public IList<T> GetRow(int index)
+      {
+         return _storage.GetRow(index);
+      }
 
       private void ValidateIndexInRange(int column, int row)
       {
