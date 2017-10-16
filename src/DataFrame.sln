@@ -15,7 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\appveyor.ps1 = ..\appveyor.ps1
 		..\appveyor.yml = ..\appveyor.yml
 		..\LICENSE = ..\LICENSE
-		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataFrame.Formats", "DataFrame.Formats\DataFrame.Formats.csproj", "{F59E57DE-31D5-4E03-BDD0-4F2DD4BD3914}"
