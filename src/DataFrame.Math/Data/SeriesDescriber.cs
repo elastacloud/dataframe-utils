@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataFrame.Math.Data
 {
-   class SeriesDescriber
+   public class SeriesDescriber
    {
       private readonly Series _series;
 
@@ -38,6 +38,19 @@ namespace DataFrame.Math.Data
                ["error"] = "not numeric"
             };
          }
+      }
+
+      public override string ToString()
+      {
+         var sb = new StringBuilder();
+
+         foreach(KeyValuePair<string, object> kvp in Describe())
+         {
+            sb.Append(kvp.Key.PadRight(10));
+            sb.AppendLine(kvp.Value.ToString());
+         }
+
+         return sb.ToString();
       }
    }
 }
