@@ -60,5 +60,10 @@ namespace DataFrame.Math.Data
 
          return series;
       }
+
+      public Dictionary<string, object> Describe()
+      {
+         return new SeriesDescriber(this).Describe();
+      }
    }
 }
