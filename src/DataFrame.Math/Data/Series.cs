@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DataFrame.Math.Data
@@ -20,6 +21,8 @@ namespace DataFrame.Math.Data
    /// </summary>
    public class Series
    {
+      private const int MaxDisplay = 10;
+
       private IList _data;
 
       public Type DataType { get; }
@@ -29,7 +32,7 @@ namespace DataFrame.Math.Data
       public Series(Type dataType, string name, IList values)
       {
          DataType = dataType;
-         Name = name;
+         Name = name ?? "noname";
          _data = values;
       }
 
@@ -44,7 +47,23 @@ namespace DataFrame.Math.Data
 
       public override string ToString()
       {
-         return $"{Name} ({DataType}) of {_data.Count}";
+         var sb = new StringBuilder();
+         sb.AppendLine($"{Name} ({DataType}) of {_data.Count}");
+
+         if(MaxDisplay * 2 >= Count)
+         {
+            sb.AppendLine(string.Join("; ", _data.Cast<object>().Select(i => i.ToString())));
+         }
+         else
+         {
+            sb.AppendLine("top " + MaxDisplay + ": ");
+            sb.AppendLine(string.Join("; ", _data.Cast<object>().Take(MaxDisplay).Select(i => i.ToString())));
+
+            sb.AppendLine("bottom " + MaxDisplay + ": ");
+            sb.AppendLine(string.Join("; ", _data.Cast<object>().Skip(Count - MaxDisplay).Take(MaxDisplay).Select(i => i.ToString())));
+         }
+
+         return sb.ToString();
       }
 
       public static Series FromList(IList values, Type dataType, string name)
@@ -59,6 +78,16 @@ namespace DataFrame.Math.Data
          typedList.AddRange(values);
 
          return series;
+      }
+
+      public static implicit operator Series(double[] decimals)
+      {
+         return new Series(typeof(double), null, decimals);
+      }
+
+      public SeriesDescriber Describe()
+      {
+         return new SeriesDescriber(this);
       }
    }
 }

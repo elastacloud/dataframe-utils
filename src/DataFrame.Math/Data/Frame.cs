@@ -4,7 +4,7 @@ using System.Linq;
 namespace DataFrame.Math.Data
 {
    /// <summary>
-   /// A pandas-like DataFrame
+   /// A pandas-like DataFrame. To be renamed to DataFrame once we change project name! :)
    /// </summary>
    public class Frame
    {

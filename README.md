@@ -22,13 +22,14 @@ A set of LINQ operators to calculate the following functions on a stream of numb
 - Standard Deviation
 - Variance
 
-## DataFrame.Data
-
-General data structures useful in math calculation. Nothing here yet.
+Common math data structures - `Matrix<T>`, `Series`, `Frame`
 
 ## DataFrame.Formats
 
-Integration with different data formats (Parquet, CSV etc.). Nothing here yet.
+Integration with different data formats (Parquet, CSV etc.). Supported formats:
+
+- Apache Parquet
+- CSV
 
 ## Contributing
 

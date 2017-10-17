@@ -25,7 +25,7 @@ namespace dftest
       }
 
 
-      public static IEnumerable<object> OperatorData = new object[]
+      public static IEnumerable<object[]> OperatorData = new object[][]
       {
          new object[] { new Input(320.25, i => i.Variance(), 2, 3, 4, 5, 15, 21, 34, 56 ) },
          new object[] { new Input(3, i => i.Mean(), 2, 3, 4) },
