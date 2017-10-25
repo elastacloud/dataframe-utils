@@ -11,12 +11,17 @@ namespace DataFrame.Math.Data
 
       public Matrix(int columns, int rows) : this(columns, rows, new SimpleMatrixStorage<T>(columns, rows))
       {
-
       }
 
       public Matrix(int columns, int rows, MatrixStorage<T> storage)
       {
          _storage = storage;
+      }
+
+      public void AddRow(int rowNum, Series<T> row)
+      {
+         for(int i = 0; i < row.Count; i++)
+            _storage.Set(i, rowNum, (T) row[i]);
       }
 
       public T this[int column, int row]

@@ -24,7 +24,6 @@ namespace DataFrame.Math.Operators
              for (int j = 0; j < source.RowCount; j++)
              {
                 matrix[i, j] = source[i, j] / (sd[i] * sd[j]);
-
              }
           }
 

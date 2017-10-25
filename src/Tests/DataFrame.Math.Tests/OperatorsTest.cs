@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Parquet.Data;
 using Xunit;
 using System.Linq;
+using DataFrame.Math.Data;
+using DataFrame.Math.Operators;
+using Microsoft.DotNet.PlatformAbstractions;
 
 namespace dftest
 {
@@ -46,6 +49,38 @@ namespace dftest
          double actual = input.Func(input.Sequence);
 
          Assert.Equal(input.Expected, actual, 5);
+      }
+
+      [Fact]
+      public void Operator_DotProduct_Possible()
+      {
+         var lhs = new Matrix<double>(2, 3);
+         var rhs = new Matrix<double>(3, 2);
+
+         lhs.AddRow(0, new Series<double>("a", new double[] { 2, 2 }));
+         lhs.AddRow(1, new Series<double>("a", new double[] { 2, 2 }));
+         lhs.AddRow(2, new Series<double>("a", new double[] { 2, 2 }));
+
+         rhs.AddRow(0, new Series<double>("a", new double[] { 2, 2, 2 }));
+         rhs.AddRow(1, new Series<double>("a", new double[] { 2, 2, 2 }));
+
+         Matrix<double> result = lhs.DotProduct(rhs);
+         Assert.Equal(result.ColumnCount, 2);
+         Assert.Equal(result.RowCount, 2);
+
+         Assert.Equal(result[0, 0], 12);
+         Assert.Equal(result[0, 1], 12);
+         Assert.Equal(result[1, 0], 12);
+         Assert.Equal(result[1, 1], 12);
+      }
+
+      [Fact]
+      public void Operator_DotProduct_NotPossible()
+      {
+         var lhs = new Matrix<double>(3, 2);
+         var rhs = new Matrix<double>(3, 2);
+
+         Assert.Throws<Exception>(() => lhs.DotProduct(rhs));
       }
    }
 }
