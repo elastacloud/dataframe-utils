@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using DataFrame.Math.Data.Storage;
@@ -18,10 +19,26 @@ namespace DataFrame.Math.Data
          _storage = storage;
       }
 
+      public Matrix<T> Clone()
+      {
+         var copy = new Matrix<T>(this.ColumnCount, this.RowCount);
+         for (int i = 0; i <= RowCount; i++)
+         {
+            copy.AddRow(i, GetRow(i));
+         }
+         return copy;
+      }
+
       public void AddRow(int rowNum, Series<T> row)
       {
          for(int i = 0; i < row.Count; i++)
             _storage.Set(i, rowNum, (T) row[i]);
+      }
+
+      public void AddRow(int rowNum, IList<T> row)
+      {
+         for (int i = 0; i < row.Count; i++)
+            _storage.Set(i, rowNum, (T)row[i]);
       }
 
       public T this[int column, int row]
