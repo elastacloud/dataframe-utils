@@ -82,5 +82,23 @@ namespace dftest
 
          Assert.Throws<Exception>(() => lhs.DotProduct(rhs));
       }
+
+      [Fact]
+      public void Operator_IdentityMatrix()
+      {
+         var lhs = new Matrix<double>(2, 2);
+         lhs.AddRow(0, new Series<double>("a", new double[] { 2, 2 }));
+         lhs.AddRow(1, new Series<double>("b", new double[] { 2, 2 }));
+
+         Matrix<double> identity = lhs.IdentityMatrix;
+         Assert.Equal(identity.ColumnCount, 2);
+         Assert.Equal(identity.RowCount, 2);
+
+         Assert.Equal(identity[0, 0], 1);
+         Assert.Equal(identity[0, 1], 0);
+         Assert.Equal(identity[1, 0], 0);
+         Assert.Equal(identity[1, 1], 1);
+
+      }
    }
 }

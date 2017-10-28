@@ -3,6 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using DataFrame.Math.Data.Storage;
+using DataFrame.Math.Operators;
 
 namespace DataFrame.Math.Data
 {
@@ -22,7 +23,7 @@ namespace DataFrame.Math.Data
       public Matrix<T> Clone()
       {
          var copy = new Matrix<T>(this.ColumnCount, this.RowCount);
-         for (int i = 0; i <= RowCount; i++)
+         for (int i = 0; i < RowCount; i++)
          {
             copy.AddRow(i, GetRow(i));
          }
@@ -54,6 +55,15 @@ namespace DataFrame.Math.Data
             ValidateIndexInRange(column, row);
 
             _storage.Set(column, row, value);
+         }
+      }
+
+      public Matrix<double> IdentityMatrix
+      {
+         get
+         {
+            Matrix<double> copy = Clone() as Matrix<double>;
+            return (this as Matrix<double>).DotProduct(copy);
          }
       }
 
