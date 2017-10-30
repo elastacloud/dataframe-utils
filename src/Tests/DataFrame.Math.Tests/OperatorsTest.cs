@@ -104,7 +104,7 @@ namespace dftest
       [Fact]
       public void Operator_Transpose()
       {
-         var mat = new Matrix<double>(2, 3);
+         var mat = new Matrix<double>(3, 2);
          mat.AddRow(0, new Series<double>("a", new double[] { 1, 2, 3 }));
          mat.AddRow(1, new Series<double>("b", new double[] { 4, 5, 6 }));
 
