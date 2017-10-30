@@ -100,5 +100,23 @@ namespace dftest
          Assert.Equal(identity[1, 1], 1);
 
       }
+
+      [Fact]
+      public void Operator_Transpose()
+      {
+         var mat = new Matrix<double>(2, 2);
+         mat.AddRow(0, new Series<double>("a", new double[] { 1, 2 }));
+         mat.AddRow(1, new Series<double>("b", new double[] { 3, 4 }));
+
+         Matrix<double> inverse = mat.Transpose();
+         Assert.Equal(inverse.ColumnCount, 2);
+         Assert.Equal(inverse.RowCount, 2);
+
+         Assert.Equal(inverse[0, 0], 1);
+         Assert.Equal(inverse[0, 1], 3);
+         Assert.Equal(inverse[1, 0], 2);
+         Assert.Equal(inverse[1, 1], 4);
+
+      }
    }
 }
