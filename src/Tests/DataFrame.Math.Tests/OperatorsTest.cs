@@ -104,18 +104,18 @@ namespace dftest
       [Fact]
       public void Operator_Transpose()
       {
-         var mat = new Matrix<double>(2, 2);
-         mat.AddRow(0, new Series<double>("a", new double[] { 1, 2 }));
-         mat.AddRow(1, new Series<double>("b", new double[] { 3, 4 }));
+         var mat = new Matrix<double>(2, 3);
+         mat.AddRow(0, new Series<double>("a", new double[] { 1, 2, 3 }));
+         mat.AddRow(1, new Series<double>("b", new double[] { 4, 5, 6 }));
 
-         Matrix<double> inverse = mat.Transpose();
-         Assert.Equal(inverse.ColumnCount, 2);
-         Assert.Equal(inverse.RowCount, 2);
+         Matrix<double> transposed = mat.Transpose();
+         Assert.Equal(transposed.ColumnCount, mat.RowCount);
+         Assert.Equal(transposed.RowCount, mat.ColumnCount);
 
-         Assert.Equal(inverse[0, 0], 1);
-         Assert.Equal(inverse[0, 1], 3);
-         Assert.Equal(inverse[1, 0], 2);
-         Assert.Equal(inverse[1, 1], 4);
+         Assert.Equal(transposed[0, 0], mat[0,0]);
+         Assert.Equal(transposed[0, 1], mat[1,0]);
+         Assert.Equal(transposed[1, 0], mat[0,1]);
+         Assert.Equal(transposed[1, 1], mat[1,1]);
 
       }
    }
