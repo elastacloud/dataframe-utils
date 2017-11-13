@@ -86,11 +86,13 @@ namespace dftest
       [Fact]
       public void Operator_IdentityMatrix()
       {
-         var lhs = new Matrix<double>(2, 2);
-         lhs.AddRow(0, new Series<double>("a", new double[] { 2, 2 }));
-         lhs.AddRow(1, new Series<double>("b", new double[] { 2, 2 }));
+         /*var lhs = new Matrix<double>(2, 2);
+         lhs.AddRow(0, new Series<double>("a", new double[] { 1, 0 }));
+         lhs.AddRow(1, new Series<double>("b", new double[] { 0, 1 }));
+         */
 
-         Matrix<double> identity = lhs.IdentityMatrix;
+         Matrix<double> identity = new Matrix<double>(2, 2).IdentityMatrix();
+            //lhs.IdentityMatrix;
          Assert.Equal(identity.ColumnCount, 2);
          Assert.Equal(identity.RowCount, 2);
 
@@ -116,6 +118,41 @@ namespace dftest
          Assert.Equal(transposed[0, 1], mat[1,0]);
          Assert.Equal(transposed[1, 0], mat[0,1]);
          Assert.Equal(transposed[1, 1], mat[1,1]);
+
+      }
+
+      [Fact]
+
+      public void Operator_InverseMatrix()
+      {
+         var mat = new Matrix<double>(3, 3);
+         mat.AddRow(0, new Series<double>("a", new double[] { 1, 2, 3 }));
+         mat.AddRow(1, new Series<double>("b", new double[] { 4, 5, 6 }));
+         mat.AddRow(2, new Series<double>("c", new double[] { 7, 8, 9 }));
+
+         Matrix<double> minor = mat.GetMatrixMinor(0,0);
+         Assert.Equal(minor.RowCount, mat.RowCount-1);
+         Assert.Equal(minor.ColumnCount, mat.ColumnCount-1);
+
+         Assert.Equal(minor[0, 0], mat[1,1]);
+         Assert.Equal(minor[0, 1], mat[1,2]);
+         Assert.Equal(minor[1, 0], mat[2,1]);
+         Assert.Equal(minor[1, 1], mat[2,2]);
+
+         Assert.Equal(minor.GetMatrixDeterminant(), 5 * 9 - 6 * 8);
+         Assert.Equal(mat.GetMatrixDeterminant(), 0); // since R2 is twice R1
+         //Assert.Throws<Exception>(() => mat.InverseMatrix());
+
+         // new non-singular matrix
+         mat.AddRow(0, new Series<double>("a", new double[] { 1, 2, 3 }));
+         mat.AddRow(1, new Series<double>("b", new double[] { 2, 3, 1 }));
+         mat.AddRow(2, new Series<double>("c", new double[] { 3, 1, 2 }));
+
+         //identity matrix
+         Matrix<double> identity = new Matrix<double>(3, 3).IdentityMatrix();
+
+         Assert.Equal(mat.InverseMatrix().DotProduct(mat).GetMatrixDeterminant().ToString(), "1");
+
 
       }
    }
